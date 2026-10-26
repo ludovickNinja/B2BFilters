@@ -40,6 +40,11 @@
   ];
   var GROUPS = ['Ring Design', 'Stones', 'Metal'];
 
+  // Quick filters: the styles most buyers look for first. Each tile toggles
+  // one value of the `style` facet, so tiles and the advanced bar stay in sync.
+  var QUICK_FILTERS = ['3 Stone', 'Halo', 'Hidden Halo', 'Solitaire', 'Vintage'];
+  var QUICK_FACET = 'style';
+
   // ---------- Derivations from the scraped data ----------
   // SKU pattern: B001-02RWME-100A -> metal code "RWM" (+E = engraved)
   var COLOUR_BY_CODE = { W: 'White', Y: 'Yellow', R: 'Rose', WR: 'White Shank with Rose Head',
@@ -86,13 +91,17 @@
   var grid = document.getElementById('productGrid');
   var tpl = document.getElementById('productCardTpl');
   var facetBar = document.getElementById('facetBar');
+  var quickBar = document.getElementById('quickFilters');
   var legacyForm = document.getElementById('fFilter');
   var els = {
     sort: document.getElementById('orderBy'),
     count: document.getElementById('itemCount'),
     clear: document.getElementById('clearAll'),
-    mode: document.getElementById('modeToggle')
+    mode: document.getElementById('modeToggle'),
+    adv: document.getElementById('advToggle'),
+    advBadge: document.getElementById('advBadge')
   };
+  var advOpen = false;
   var legacyMode = /[?&]filters=legacy\b/.test(location.search);
 
   // ---------- Filtering ----------
@@ -220,6 +229,58 @@
     });
   }
 
+  // ---------- Quick filters ----------
+  var quickEls = [];
+
+  function buildQuickFilters() {
+    quickBar.innerHTML = '';
+    quickEls = [];
+    QUICK_FILTERS.forEach(function (value) {
+      var tile = document.createElement('button');
+      tile.type = 'button';
+      tile.className = 'quick_tile';
+      tile.setAttribute('aria-pressed', 'false');
+      tile.innerHTML =
+        '<span class="quick_tile_label"></span>' +
+        '<span class="quick_tile_check" aria-hidden="true">' +
+          '<svg viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>' +
+        '</span>';
+      tile.querySelector('.quick_tile_label').textContent = value;
+      tile.addEventListener('click', function () {
+        var sel = state.sel[QUICK_FACET];
+        if (sel.has(value)) sel.delete(value); else sel.add(value);
+        render();
+      });
+      quickBar.appendChild(tile);
+      quickEls.push({ tile: tile, value: value });
+    });
+  }
+
+  function updateQuickFilters() {
+    var sel = state.sel[QUICK_FACET];
+    var pool = products.filter(function (p) { return matchesAll(p, QUICK_FACET); });
+    quickEls.forEach(function (qe) {
+      var on = sel.has(qe.value);
+      // Dim a tile that would return nothing given the other active facets
+      var any = pool.some(function (p) { return p.attrs[QUICK_FACET].indexOf(qe.value) !== -1; });
+      qe.tile.classList.toggle('selected', on);
+      qe.tile.classList.toggle('zero', !any);
+      qe.tile.setAttribute('aria-pressed', String(on));
+    });
+  }
+
+  // ---------- Advanced toggle ----------
+  function setAdvanced(open) {
+    advOpen = open;
+    facetBar.hidden = !open;
+    els.adv.setAttribute('aria-expanded', String(open));
+  }
+  function updateAdvancedBadge() {
+    // Count active facets other than the quick-filter facet
+    var n = FACETS.filter(function (f) { return f.key !== QUICK_FACET && state.sel[f.key].size > 0; }).length;
+    els.advBadge.textContent = n ? String(n) : '';
+  }
+
   // ---------- Legacy bar (previous production UI) ----------
   function wireLegacy() {
     var map = { ringColourID: 'colour', MMSize: 'width', diamondShape3: 'centerShape' };
@@ -283,6 +344,8 @@
     els.count.textContent = list.length;
     els.clear.hidden = !anyActive();
     updateFacetBar();
+    updateQuickFilters();
+    updateAdvancedBadge();
     updateLegacy();
   }
 
@@ -296,13 +359,18 @@
   els.sort.addEventListener('change', function () { state.sort = els.sort.value; render(); });
   els.clear.addEventListener('click', clearAll);
 
+  els.adv.addEventListener('click', function () { setAdvanced(!advOpen); });
+
   if (legacyMode) {
     facetBar.hidden = true;
+    quickBar.hidden = true;
+    els.adv.hidden = true;
     legacyForm.hidden = false;
     els.mode.textContent = 'New filters';
     els.mode.href = location.pathname;
   }
   buildFacetBar();
+  buildQuickFilters();
   wireLegacy();
 
   Promise.all([

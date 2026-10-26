@@ -92,12 +92,20 @@
     </div>
     <h1 class="pgTitle">Bridal</h1>
 
+    <!-- ===== Quick filters: the styles most people look for (built by js/app.js from QUICK_FILTERS) ===== -->
+    <div class="quick_filters" id="quickFilters" aria-label="Quick filters"></div>
+
     <!-- ===== Filter bar ===== -->
     <div id="filtre">
       <div class="filter_top">
         <div class="item_count">
           <strong id="itemCount">0</strong> items
           <button type="button" id="clearAll" class="clear_all" hidden>Clear filters</button>
+          <button type="button" id="advToggle" class="adv_toggle" aria-expanded="false" aria-controls="facetBar">
+            Advanced filters
+            <span class="adv_badge" id="advBadge"></span>
+            <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          </button>
         </div>
         <div class="sort_cell">
           <span>Sort By :</span>
@@ -113,8 +121,8 @@
         </div>
       </div>
 
-      <!-- New grouped multi-select facets (built by js/app.js from FACETS) -->
-      <div class="facet_bar" id="facetBar"></div>
+      <!-- Advanced: grouped multi-select facets (built by js/app.js from FACETS) -->
+      <div class="facet_bar" id="facetBar" hidden></div>
 
       <!-- Previous production filter bar, shown with ?filters=legacy for comparison -->
       <form id="fFilter" class="legacy_filters" onsubmit="return false;" hidden>

@@ -30,9 +30,19 @@ must be served over HTTP rather than opened from disk.
 | `assets/products/` | Product thumbnails (220x220) from the saved page |
 | `assets/icons/` | Search, wishlist, list and social icons from the saved page |
 
-## New filter bar
+## Quick filters
 
-Three groups, each a row of dropdown buttons with checkboxes:
+A row of tiles under the page title for the styles buyers look for first
+(3 Stone, Halo, Hidden Halo, Solitaire, Vintage). Clicking a tile toggles
+that value in the Styles facet, so tiles and the advanced bar always agree; a tile that
+would return nothing given the other active facets is dimmed. The list lives in
+`QUICK_FILTERS` in `js/app.js`.
+
+## Advanced filters
+
+Collapsed by default behind the **Advanced filters** toggle next to the item count. The
+badge on the toggle shows how many non-style facets are active. Three groups, each a
+row of dropdown buttons with checkboxes:
 
 | Group | Facets |
 | --- | --- |
