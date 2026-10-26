@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crownring.com - B2B website</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Roboto:wght@400;500&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== Fixed dark header ===== -->
+<div class="header_wrapper">
+  <header>
+    <div class="heading">
+      <div class="tagline">Crown Canada (<span class="cap">Head Office</span>)</div>
+      <div class="header_row">
+        <a class="logo" href="#" aria-label="CrownRing home">
+          <svg viewBox="0 0 260 44" xmlns="http://www.w3.org/2000/svg" role="img">
+            <text x="0" y="33" class="logo_text">C<tspan class="sc">ROWN</tspan>R<tspan class="sc">ING</tspan></text>
+            <g transform="translate(218,6)" fill="#fff">
+              <path d="M2 30 L5 12 L12 22 L18 4 L24 22 L31 12 L34 30 Z" opacity=".95"/>
+              <rect x="2" y="31" width="32" height="4" rx="1"/>
+              <circle cx="5" cy="11" r="2"/><circle cx="18" cy="3" r="2.2"/><circle cx="31" cy="11" r="2"/>
+            </g>
+          </svg>
+        </a>
+        <div class="search">
+          <form onsubmit="return false;">
+            <input type="text" name="SM_val" id="SM_val" autocomplete="off" placeholder="Type style number here">
+            <button type="submit" aria-label="Search"><img src="assets/icons/bt_search.gif" alt=""></button>
+          </form>
+          <div class="search_links">
+            For Traditional Bands, click <a href="#">here</a>. For Anniversary Bands, click <a href="#">here</a>
+          </div>
+        </div>
+        <nav class="menu_main">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li class="has_dd">
+              <a href="#" class="mtopDD">Collections</a>
+              <div class="menuMain_dd">
+                <div>BLEU ROYALE</div><div>CARLEX</div><div>CR COLLECTION</div><div>CROWNRING</div>
+                <div>LOVE STORY</div><div>MFIT-MC</div><div>NOAM CARVER BRIDAL</div>
+                <div>NOAM CARVER FINE JEWELRY</div><div>TORQUE</div><div>TRADITIONAL BANDS</div><div>ANNIVERSARY</div>
+              </div>
+            </li>
+            <li><a href="#">Contact us</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div class="contents">
+  <div class="content_wrapper">
+
+    <!-- ===== Grey account menu bar ===== -->
+    <ul class="menu_top">
+      <li><a href="#">Order History</a></li>
+      <li><a href="#">Request RA</a></li>
+      <li class="has_dd">
+        <a href="#">My Tools</a>
+        <div class="menuMain_dd">
+          <div>Price List</div><div>My Lists</div><div>My Quotes</div><div>My Bridal Quotes</div>
+          <div>My Wishlist</div><div>My showcase</div><div>Metal rates</div><div>My Sales Rep</div><div>SPIFF Reports</div>
+        </div>
+      </li>
+      <li><a href="#">Warranty Info</a></li>
+      <li><a href="#">My Account</a></li>
+      <li><a href="#">SPIFF Login</a></li>
+      <li><a href="#">My Cart (<span id="spanCart_nbItems">6</span>)</a></li>
+    </ul>
+
+    <!-- ===== Wholesale Portal logo ===== -->
+    <div class="portal_logo">
+      <svg viewBox="0 0 76 76" width="76" height="76" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="38" cy="38" r="38" fill="#000"/>
+        <circle cx="33" cy="41" r="14" fill="none" stroke="#fff" stroke-width="3.5"/>
+        <circle cx="43" cy="34" r="14" fill="none" stroke="#fff" stroke-width="3.5"/>
+      </svg>
+      <span>Wholesale Portal</span>
+    </div>
+
+    <!-- ===== Breadcrumb + title ===== -->
+    <div class="breadCrumb">
+      <a href="#">Home</a> <span class="sep">&raquo;</span> <a href="#">Noam Carver Bridal</a> <span class="sep">&raquo;</span> <a href="#">Bridal</a>
+    </div>
+    <h1 class="pgTitle">Bridal</h1>
+
+    <!-- ===== Filter bar ===== -->
+    <div id="filtre">
+      <div class="filter_top">
+        <div class="item_count">
+          <strong id="itemCount">0</strong> items
+          <button type="button" id="clearAll" class="clear_all" hidden>Clear filters</button>
+        </div>
+        <div class="sort_cell">
+          <span>Sort By :</span>
+          <select name="orderBy" id="orderBy" class="selectBox">
+            <option value="dateCreated">Date Asc</option>
+            <option value="dateCreated desc">Date Desc</option>
+            <option value="p.SKU" selected>Item# Asc</option>
+            <option value="p.SKU desc">Item# Desc</option>
+            <option value="price">Price Asc</option>
+            <option value="price desc">Price Desc</option>
+          </select>
+          <a href="?filters=legacy" id="modeToggle" class="mode_toggle">Legacy filters</a>
+        </div>
+      </div>
+
+      <!-- New grouped multi-select facets (built by js/app.js from FACETS) -->
+      <div class="facet_bar" id="facetBar"></div>
+
+      <!-- Previous production filter bar, shown with ?filters=legacy for comparison -->
+      <form id="fFilter" class="legacy_filters" onsubmit="return false;" hidden>
+        <div id="divFilters">
+          <div class="filter_cell">
+            <select name="ringColourID" id="ringColourID" class="selectBox" style="max-width:160px;">
+              <option value="">All Colours</option>
+              <option value="1">White</option>
+              <option value="2">Yellow</option>
+              <option value="16">Rose</option>
+              <option value="68">White Shank with Rose Head</option>
+              <option value="69">Yellow Shank with White Head</option>
+              <option value="71">Rose Shank with White Head</option>
+              <option value="130">White with Black Enamel</option>
+              <option value="188">Yellow with Black Enamel</option>
+              <option value="212">Yellow with White Detail</option>
+              <option value="214">White with Rose Detail</option>
+              <option value="219">Yellow Bezel - White Shank &amp; Halo</option>
+              <option value="222">Rose with White Detail</option>
+              <option value="230">Yellow with White Enamel</option>
+            </select>
+          </div>
+          <div class="filter_cell">
+            <select name="MMSize" id="MMSize" class="selectBox">
+              <option value="">All MM Sizes</option>
+              <option value="1.50">1.50</option><option value="1.60">1.60</option><option value="1.70">1.70</option>
+              <option value="1.80">1.80</option><option value="2.00">2.00</option><option value="2.10">2.10</option>
+              <option value="2.20">2.20</option><option value="2.50">2.50</option><option value="2.60">2.60</option>
+              <option value="2.70">2.70</option><option value="4.10">4.10</option><option value="5.00">5.00</option>
+              <option value="5.75">5.75</option><option value="7.00">7.00</option>
+            </select>
+          </div>
+          <div class="filter_cell shape_cell">
+            <select name="diamondShape3" id="shapeDD" class="selectBox">
+              <option value="">All Shapes</option>
+              <option value="11">Asscher</option><option value="4">Baguette</option><option value="10">Cushion</option>
+              <option value="70">Elongated Cushion</option><option value="5">Emerald</option><option value="19">Heart</option>
+              <option value="21">Marquise</option><option value="16">Oval</option><option value="23">Pear</option>
+              <option value="2">Princess</option><option value="18">Radiant</option><option value="1">Round</option>
+              <option value="25">Trillion</option>
+            </select>
+          </div>
+          <div class="filter_cell">
+            <input id="resetBtn" type="button" value="Reset" class="reset_btn" hidden>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- ===== Product grid ===== -->
+    <form name="f" id="f" onsubmit="return false;">
+      <div class="parent" id="productGrid"></div>
+    </form>
+    <div class="paging">Page <span id="pageNum">1</span> of <span id="pageTotal">14</span></div>
+
+  </div>
+</div>
+
+<div class="footer_wrapper">
+  <div class="footer">
+    <div class="copy">&copy; Copyright 2026 by CrownRing. All Rights Reserved...</div>
+    <div class="social">
+      <a href="#"><img src="assets/icons/ic_tw.gif" alt="Twitter"></a>
+      <a href="#"><img src="assets/icons/ic_fb.gif" alt="Facebook"></a>
+      <a href="#"><img src="assets/icons/ic_is.gif" alt="Instagram"></a>
+      <a href="#"><img src="assets/icons/ic_pt.gif" alt="Pinterest"></a>
+      <a href="#"><img src="assets/icons/ic_in.gif" alt="LinkedIn"></a>
+      <a href="#"><img src="assets/icons/ic_yt.gif" alt="YouTube"></a>
+    </div>
+  </div>
+</div>
+
+<template id="productCardTpl">
+  <div class="child">
+    <table cellspacing="3" cellpadding="0">
+      <tbody>
+        <tr><td class="img_cell"><a href="#" class="img_link"><img class="imgprod" loading="lazy" width="220" height="220" alt=""></a></td></tr>
+        <tr><td class="sku_cell"><input type="checkbox" name="btAddAll" class="prodView_checkbox"><br><a href="#" class="sku"></a></td></tr>
+        <tr><td class="details">
+          <div class="size_metal"><strong>Size</strong> <span class="size"></span>&nbsp;<strong>Metal</strong> <span class="metal"></span></div>
+          <div class="center"><strong>Center Stone</strong> <span class="cs"></span></div>
+          <div class="accent"></div>
+          <div class="price_row"><span class="lbl">Your Price&nbsp;</span><span class="price"></span></div>
+          <div class="wholesale"><strong>(Wholesale Price)</strong></div>
+        </td></tr>
+        <tr><td class="icons">
+          <a href="#" title="Add to My WishLists"><img src="assets/icons/icon_wishList.gif" alt="Add to My WishLists"></a>
+          <a href="#" title="Add to My Lists"><img src="assets/icons/icon_myList.gif" alt="Add to My Lists"></a>
+        </td></tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<script src="js/app.js"></script>
+</body>
+</html>

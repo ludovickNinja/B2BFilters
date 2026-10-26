@@ -1,0 +1,852 @@
+{
+ "B001-01WM-100A": {
+  "style": [
+   "Solitaire"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Diamond",
+   "Pave",
+   "Thin"
+  ],
+  "width": "1.80",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B001-01YM-100A": {
+  "style": [
+   "Solitaire"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Diamond",
+   "Pave",
+   "Thin"
+  ],
+  "width": "1.80",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B001-02RWM-100A": {
+  "style": [
+   "Solitaire",
+   "Straight"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Fitted",
+   "Plain"
+  ],
+  "width": "2.20",
+  "accentShape": []
+ },
+ "B001-02RWME-100A": {
+  "style": [
+   "Solitaire",
+   "Straight",
+   "Vintage"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Engraved",
+   "Fitted"
+  ],
+  "width": "2.20",
+  "accentShape": []
+ },
+ "B001-02WM-100A": {
+  "style": [
+   "Solitaire",
+   "Straight"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Fitted",
+   "Plain"
+  ],
+  "width": "2.20",
+  "accentShape": []
+ },
+ "B001-02WME-100A": {
+  "style": [
+   "Solitaire",
+   "Straight",
+   "Vintage"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Engraved",
+   "Fitted"
+  ],
+  "width": "2.20",
+  "accentShape": []
+ },
+ "B001-02YME-100A": {
+  "style": [
+   "Solitaire",
+   "Straight",
+   "Vintage"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Engraved",
+   "Fitted"
+  ],
+  "width": "2.20",
+  "accentShape": []
+ },
+ "B001-03WM-100A": {
+  "style": [
+   "Split Shank"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Diamond",
+   "Pave",
+   "Split"
+  ],
+  "width": "2.00",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B001-03YM-100A": {
+  "style": [
+   "Split Shank"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Diamond",
+   "Pave",
+   "Split"
+  ],
+  "width": "2.00",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B001-04WM-FCYA": {
+  "style": [
+   "Solitaire"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Diamond",
+   "Pave",
+   "Thin"
+  ],
+  "width": "1.80",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B001-05WM-100A": {
+  "style": [
+   "3 Stone"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Diamond",
+   "Pave"
+  ],
+  "width": "1.80",
+  "accentShape": [
+   "Pear",
+   "Round"
+  ]
+ },
+ "B001-07WM-100A": {
+  "style": [
+   "3 Stone"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Plain"
+  ],
+  "width": "2.50",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B001-07YM-100A": {
+  "style": [
+   "3 Stone"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Plain"
+  ],
+  "width": "2.50",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B002-01RM-100A": {
+  "style": [
+   "Solitaire"
+  ],
+  "head": [
+   "6-Prong"
+  ],
+  "shank": [
+   "Diamond",
+   "Pave",
+   "Thin"
+  ],
+  "width": "1.70",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B002-01WM-100A": {
+  "style": [
+   "Solitaire"
+  ],
+  "head": [
+   "6-Prong"
+  ],
+  "shank": [
+   "Diamond",
+   "Pave",
+   "Thin"
+  ],
+  "width": "1.70",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B002-02RM-100A": {
+  "style": [
+   "Solitaire",
+   "Straight"
+  ],
+  "head": [
+   "6-Prong"
+  ],
+  "shank": [
+   "Plain",
+   "Thin"
+  ],
+  "width": "1.80",
+  "accentShape": []
+ },
+ "B002-02WM-100A": {
+  "style": [
+   "Solitaire",
+   "Straight"
+  ],
+  "head": [
+   "6-Prong"
+  ],
+  "shank": [
+   "Plain",
+   "Thin"
+  ],
+  "width": "1.80",
+  "accentShape": []
+ },
+ "B002-02YM-100A": {
+  "style": [
+   "Solitaire",
+   "Straight"
+  ],
+  "head": [
+   "6-Prong"
+  ],
+  "shank": [
+   "Plain",
+   "Thin"
+  ],
+  "width": "1.80",
+  "accentShape": []
+ },
+ "B002-02YM-200A": {
+  "style": [
+   "Solitaire",
+   "Straight"
+  ],
+  "head": [
+   "6-Prong"
+  ],
+  "shank": [
+   "Plain",
+   "Thin"
+  ],
+  "width": "1.80",
+  "accentShape": []
+ },
+ "B002-03WM-100A": {
+  "style": [
+   "Split Shank"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Diamond",
+   "Pave",
+   "Split"
+  ],
+  "width": "2.00",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B002-03YM-100A": {
+  "style": [
+   "Split Shank"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Diamond",
+   "Pave",
+   "Split"
+  ],
+  "width": "2.00",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B003-01WM-100A": {
+  "style": [
+   "Straight"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Diamond",
+   "Pave"
+  ],
+  "width": "2.50",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B003-02WM-100A": {
+  "style": [
+   "Wide Band",
+   "Straight"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Diamond",
+   "Pave"
+  ],
+  "width": "4.10",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B004-01WM-100A": {
+  "style": [
+   "Solitaire"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Diamond",
+   "Pave",
+   "Thin"
+  ],
+  "width": "1.60",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B004-01YM-100A": {
+  "style": [
+   "Solitaire"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Diamond",
+   "Pave",
+   "Thin"
+  ],
+  "width": "1.60",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B004-02WME-100A": {
+  "style": [
+   "Solitaire",
+   "Vintage"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Engraved",
+   "Milgrain"
+  ],
+  "width": "2.00",
+  "accentShape": []
+ },
+ "B004-02YME-100A": {
+  "style": [
+   "Solitaire",
+   "Vintage"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Engraved",
+   "Milgrain"
+  ],
+  "width": "2.00",
+  "accentShape": []
+ },
+ "B004-03WM-100A": {
+  "style": [
+   "Twisted"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Diamond",
+   "Pave",
+   "Twist"
+  ],
+  "width": "1.80",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B004-04RWM-100A": {
+  "style": [
+   "Solitaire",
+   "Hidden Halo"
+  ],
+  "head": [
+   "Hidden Halo",
+   "Round Prongs"
+  ],
+  "shank": [
+   "Plain",
+   "Thin"
+  ],
+  "width": "1.80",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B004-04WM-100A": {
+  "style": [
+   "Solitaire",
+   "Hidden Halo"
+  ],
+  "head": [
+   "Hidden Halo",
+   "Round Prongs"
+  ],
+  "shank": [
+   "Plain",
+   "Thin"
+  ],
+  "width": "1.80",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B004-04YM-100A": {
+  "style": [
+   "Solitaire",
+   "Hidden Halo"
+  ],
+  "head": [
+   "Hidden Halo",
+   "Round Prongs"
+  ],
+  "shank": [
+   "Plain",
+   "Thin"
+  ],
+  "width": "1.80",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B005-01WM-100A": {
+  "style": [
+   "Halo"
+  ],
+  "head": [
+   "Halo"
+  ],
+  "shank": [
+   "Cathedral",
+   "Diamond",
+   "Pave"
+  ],
+  "width": "1.70",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B005-01YM-100A": {
+  "style": [
+   "Halo"
+  ],
+  "head": [
+   "Halo"
+  ],
+  "shank": [
+   "Cathedral",
+   "Diamond",
+   "Pave"
+  ],
+  "width": "1.70",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B006-01WM-100A": {
+  "style": [
+   "Straight"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Channel",
+   "Diamond"
+  ],
+  "width": "2.60",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B006-01YWM-100A": {
+  "style": [
+   "Straight"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Channel",
+   "Diamond"
+  ],
+  "width": "2.60",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B006-02WM-100A": {
+  "style": [
+   "Straight"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Channel",
+   "Diamond"
+  ],
+  "width": "2.70",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B006-02YM-100A": {
+  "style": [
+   "Straight"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Channel",
+   "Diamond"
+  ],
+  "width": "2.70",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B006-03RWM-100A": {
+  "style": [
+   "Solitaire",
+   "Straight"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Cathedral",
+   "Plain"
+  ],
+  "width": "2.20",
+  "accentShape": []
+ },
+ "B006-03WM-100A": {
+  "style": [
+   "Solitaire",
+   "Straight"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Cathedral",
+   "Plain"
+  ],
+  "width": "2.20",
+  "accentShape": []
+ },
+ "B006-03WME-100A": {
+  "style": [
+   "Solitaire",
+   "Straight",
+   "Vintage"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Cathedral",
+   "Engraved"
+  ],
+  "width": "2.20",
+  "accentShape": []
+ },
+ "B006-03YME-100A": {
+  "style": [
+   "Solitaire",
+   "Straight",
+   "Vintage"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Cathedral",
+   "Engraved"
+  ],
+  "width": "2.20",
+  "accentShape": []
+ },
+ "B006-03YWME-100A": {
+  "style": [
+   "Solitaire",
+   "Straight",
+   "Vintage"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Cathedral",
+   "Engraved"
+  ],
+  "width": "2.20",
+  "accentShape": []
+ },
+ "B006-04WM-FCYA": {
+  "style": [
+   "Solitaire"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Channel",
+   "Diamond"
+  ],
+  "width": "2.60",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B006-05WM-FCYA": {
+  "style": [
+   "Solitaire"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Channel",
+   "Diamond"
+  ],
+  "width": "2.60",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B006-07WM-FCYA": {
+  "style": [
+   "Solitaire"
+  ],
+  "head": [
+   "V-Tip"
+  ],
+  "shank": [
+   "Cathedral",
+   "Plain"
+  ],
+  "width": "2.50",
+  "accentShape": []
+ },
+ "B007-01RM-100A": {
+  "style": [
+   "Halo"
+  ],
+  "head": [
+   "Halo"
+  ],
+  "shank": [
+   "Diamond",
+   "Pave",
+   "Thin"
+  ],
+  "width": "1.60",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B007-01WM-100A": {
+  "style": [
+   "Halo"
+  ],
+  "head": [
+   "Halo"
+  ],
+  "shank": [
+   "Diamond",
+   "Pave",
+   "Thin"
+  ],
+  "width": "1.60",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B007-01YM-100A": {
+  "style": [
+   "Halo"
+  ],
+  "head": [
+   "Halo"
+  ],
+  "shank": [
+   "Diamond",
+   "Pave",
+   "Thin"
+  ],
+  "width": "1.60",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B007-02WM-100A": {
+  "style": [
+   "Halo"
+  ],
+  "head": [
+   "Halo"
+  ],
+  "shank": [
+   "Diamond",
+   "Pave",
+   "Thin"
+  ],
+  "width": "1.60",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B007-03WM-FCYA": {
+  "style": [
+   "Halo"
+  ],
+  "head": [
+   "Halo"
+  ],
+  "shank": [
+   "Diamond",
+   "Pave",
+   "Thin"
+  ],
+  "width": "1.60",
+  "accentShape": [
+   "Round"
+  ]
+ },
+ "B008-01WM-100A": {
+  "style": [
+   "Vintage"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Channel",
+   "Diamond",
+   "Milgrain"
+  ],
+  "width": "2.50",
+  "accentShape": [
+   "Princess",
+   "Round"
+  ]
+ },
+ "B008-02WM-100A": {
+  "style": [
+   "Vintage",
+   "Wide Band"
+  ],
+  "head": [
+   "4-Prong"
+  ],
+  "shank": [
+   "Channel",
+   "Diamond",
+   "Milgrain"
+  ],
+  "width": "2.50",
+  "accentShape": [
+   "Princess",
+   "Round"
+  ]
+ }
+}
