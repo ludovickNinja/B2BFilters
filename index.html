@@ -117,59 +117,12 @@
             <option value="price">Price Asc</option>
             <option value="price desc">Price Desc</option>
           </select>
-          <a href="?filters=legacy" id="modeToggle" class="mode_toggle">Legacy filters</a>
         </div>
       </div>
 
       <!-- Advanced: grouped multi-select facets (built by js/app.js from FACETS) -->
       <div class="facet_bar" id="facetBar" hidden></div>
 
-      <!-- Previous production filter bar, shown with ?filters=legacy for comparison -->
-      <form id="fFilter" class="legacy_filters" onsubmit="return false;" hidden>
-        <div id="divFilters">
-          <div class="filter_cell">
-            <select name="ringColourID" id="ringColourID" class="selectBox" style="max-width:160px;">
-              <option value="">All Colours</option>
-              <option value="1">White</option>
-              <option value="2">Yellow</option>
-              <option value="16">Rose</option>
-              <option value="68">White Shank with Rose Head</option>
-              <option value="69">Yellow Shank with White Head</option>
-              <option value="71">Rose Shank with White Head</option>
-              <option value="130">White with Black Enamel</option>
-              <option value="188">Yellow with Black Enamel</option>
-              <option value="212">Yellow with White Detail</option>
-              <option value="214">White with Rose Detail</option>
-              <option value="219">Yellow Bezel - White Shank &amp; Halo</option>
-              <option value="222">Rose with White Detail</option>
-              <option value="230">Yellow with White Enamel</option>
-            </select>
-          </div>
-          <div class="filter_cell">
-            <select name="MMSize" id="MMSize" class="selectBox">
-              <option value="">All MM Sizes</option>
-              <option value="1.50">1.50</option><option value="1.60">1.60</option><option value="1.70">1.70</option>
-              <option value="1.80">1.80</option><option value="2.00">2.00</option><option value="2.10">2.10</option>
-              <option value="2.20">2.20</option><option value="2.50">2.50</option><option value="2.60">2.60</option>
-              <option value="2.70">2.70</option><option value="4.10">4.10</option><option value="5.00">5.00</option>
-              <option value="5.75">5.75</option><option value="7.00">7.00</option>
-            </select>
-          </div>
-          <div class="filter_cell shape_cell">
-            <select name="diamondShape3" id="shapeDD" class="selectBox">
-              <option value="">All Shapes</option>
-              <option value="11">Asscher</option><option value="4">Baguette</option><option value="10">Cushion</option>
-              <option value="70">Elongated Cushion</option><option value="5">Emerald</option><option value="19">Heart</option>
-              <option value="21">Marquise</option><option value="16">Oval</option><option value="23">Pear</option>
-              <option value="2">Princess</option><option value="18">Radiant</option><option value="1">Round</option>
-              <option value="25">Trillion</option>
-            </select>
-          </div>
-          <div class="filter_cell">
-            <input id="resetBtn" type="button" value="Reset" class="reset_btn" hidden>
-          </div>
-        </div>
-      </form>
     </div>
 
     <!-- ===== Product grid ===== -->

@@ -5,9 +5,6 @@
  *
  * Filter semantics: options inside one facet are OR-ed, facets are AND-ed.
  * Each option shows how many items it would yield given the other facets.
- *
- * ?filters=legacy shows the previous production bar (single-select dropdowns)
- * wired to the same state, for side-by-side comparison.
  */
 (function () {
   'use strict';
@@ -92,17 +89,14 @@
   var tpl = document.getElementById('productCardTpl');
   var facetBar = document.getElementById('facetBar');
   var quickBar = document.getElementById('quickFilters');
-  var legacyForm = document.getElementById('fFilter');
   var els = {
     sort: document.getElementById('orderBy'),
     count: document.getElementById('itemCount'),
     clear: document.getElementById('clearAll'),
-    mode: document.getElementById('modeToggle'),
     adv: document.getElementById('advToggle'),
     advBadge: document.getElementById('advBadge')
   };
   var advOpen = false;
-  var legacyMode = /[?&]filters=legacy\b/.test(location.search);
 
   // ---------- Filtering ----------
   function matchesFacet(p, key) {
@@ -281,25 +275,6 @@
     els.advBadge.textContent = n ? String(n) : '';
   }
 
-  // ---------- Legacy bar (previous production UI) ----------
-  function wireLegacy() {
-    var map = { ringColourID: 'colour', MMSize: 'width', diamondShape3: 'centerShape' };
-    Object.keys(map).forEach(function (name) {
-      var sel = legacyForm.querySelector('[name="' + name + '"]');
-      sel.addEventListener('change', function () {
-        var key = map[name];
-        state.sel[key].clear();
-        if (sel.value) state.sel[key].add(sel.options[sel.selectedIndex].text);
-        render();
-      });
-    });
-    var reset = document.getElementById('resetBtn');
-    reset.addEventListener('click', clearAll);
-  }
-  function updateLegacy() {
-    document.getElementById('resetBtn').hidden = !anyActive();
-  }
-
   // ---------- Grid ----------
   function buildCard(p, isLastInRow) {
     var node = tpl.content.firstElementChild.cloneNode(true);
@@ -346,12 +321,10 @@
     updateFacetBar();
     updateQuickFilters();
     updateAdvancedBadge();
-    updateLegacy();
   }
 
   function clearAll() {
     FACETS.forEach(function (f) { state.sel[f.key].clear(); });
-    legacyForm.querySelectorAll('select').forEach(function (s) { s.value = ''; });
     render();
   }
 
@@ -361,17 +334,8 @@
 
   els.adv.addEventListener('click', function () { setAdvanced(!advOpen); });
 
-  if (legacyMode) {
-    facetBar.hidden = true;
-    quickBar.hidden = true;
-    els.adv.hidden = true;
-    legacyForm.hidden = false;
-    els.mode.textContent = 'New filters';
-    els.mode.href = location.pathname;
-  }
   buildFacetBar();
   buildQuickFilters();
-  wireLegacy();
 
   Promise.all([
     fetch('data/products.json').then(function (r) { return r.json(); }),

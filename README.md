@@ -15,9 +15,6 @@ python -m http.server 8765
 Then open http://localhost:8765/index.html. The page fetches the JSON data files, so it
 must be served over HTTP rather than opened from disk.
 
-- `index.html` shows the **new grouped multi-select filter bar**.
-- `index.html?filters=legacy` shows the **previous production bar** (single-select dropdowns) on the same data, for comparison. The link at the right of the Sort By row toggles between them.
-
 ## Layout
 
 | Path | Purpose |
