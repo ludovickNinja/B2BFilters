@@ -1,0 +1,13 @@
+{
+  "_comment": "Per-category filter setup, keyed by cat1ID-cat2ID. facets: enabled facet keys in display order. quick: quick-filter tiles in display order.",
+  "102-105": {
+    "facets": ["style", "head", "shank", "width", "centerShape", "accentShape", "colour", "karat"],
+    "quick": [
+      { "facet": "style", "value": "3 Stone" },
+      { "facet": "style", "value": "Halo" },
+      { "facet": "style", "value": "Hidden Halo" },
+      { "facet": "style", "value": "Solitaire" },
+      { "facet": "style", "value": "Vintage" }
+    ]
+  }
+}

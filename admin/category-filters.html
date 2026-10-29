@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crownring.com - Categories - NOAM CARVER BRIDAL - BRIDAL</title>
+<link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<!-- ===== Admin header ===== -->
+<div class="adm_header">
+  <input type="text" class="barcode" placeholder="Enter Barcode#" autocomplete="off">
+  <svg class="adm_logo" viewBox="0 0 160 64" aria-hidden="true">
+    <g fill="none" stroke="#fff" stroke-width="3" stroke-linejoin="round">
+      <path d="M10 22 L40 6 L80 2 L120 6 L150 22 L80 60 Z"/>
+      <path d="M10 22 H150 M40 6 L58 22 L80 2 L102 22 L120 6 M58 22 L80 60 L102 22 M10 22 L80 60 L150 22"/>
+    </g>
+  </svg>
+  <nav class="adm_nav">
+    <a href="#">HOME</a><a href="#">MENU</a><a href="#">LOGOUT</a><span>(Ludovick Bilodeau)</span>
+  </nav>
+</div>
+
+<main class="adm_main">
+  <h1 class="adm_title">Categories - Noam Carver Bridal - Bridal</h1>
+
+  <div id="divTabs">
+    <a href="#" class="tab2" title="Not part of this mock">Details</a>
+    <a href="#" class="tab2" title="Not part of this mock">Category Subs</a>
+    <a href="#" class="tab2" title="Not part of this mock">NC Website</a>
+    <a href="#" class="tab1" aria-current="page">Filters</a>
+  </div>
+
+  <!-- ===== Advanced filters ===== -->
+  <h2 class="h2pdbs">Advanced Filters</h2>
+  <div class="tabcontent">
+    <p class="hint">
+      Choose which filters appear under <strong>Advanced filters</strong> on this category's browse page.
+      Drag a row to change its order within its group. Filters and their values are managed in the
+      <a href="#" class="link_act">Filters</a> module; values with no products in this category are hidden automatically.
+    </p>
+    <div id="facetGroups"></div>
+  </div>
+
+  <!-- ===== Quick filters ===== -->
+  <h2 class="h2pdbs">Quick Filters</h2>
+  <div class="tabcontent">
+    <p class="hint">
+      Tiles shown above the filter bar for what buyers look for first. Each tile selects one value of an
+      enabled filter. Up to <span id="quickMax"></span> tiles.
+    </p>
+
+    <div class="quick_add">
+      <label>Filter
+        <select id="qFacet" class="form-control"></select>
+      </label>
+      <label>Value
+        <select id="qValue" class="form-control"></select>
+      </label>
+      <button type="button" id="qAdd" class="addbtn">ADD</button>
+      <span id="qMsg" class="qmsg"></span>
+    </div>
+
+    <table class="adm_table" id="quickTable">
+      <tbody></tbody>
+    </table>
+    <div class="empty_row" id="quickEmpty" hidden>No quick filters. The tile row is hidden on the browse page.</div>
+
+    <h3 class="title">Preview</h3>
+    <div class="quick_filters" id="quickPreview"></div>
+  </div>
+
+  <!-- ===== Save ===== -->
+  <div class="save_bar">
+    <button type="button" id="saveBtn" class="savebtn">SAVE</button>
+    <span id="saveState" class="save_state"></span>
+    <span class="spacer"></span>
+    <a href="#" id="resetBtn" class="link_act">Reset to default</a>
+    <a href="../index.html" target="cr_browse" class="link_act">Preview browse page &#8599;</a>
+  </div>
+
+  <details class="payload">
+    <summary>Payload sent on Save (JSON)</summary>
+    <pre id="payload"></pre>
+  </details>
+</main>
+
+<template id="dragIconTpl">
+  <svg class="drag_icon" width="6" height="10" viewBox="0 0 6 10" aria-hidden="true"><path fill="#999" d="M1.2 10a1.2 1.25 0 1 1 0-2.5 1.2 1.25 0 0 1 0 2.5Zm3.6 0a1.2 1.25 0 1 1 0-2.5 1.2 1.25 0 0 1 0 2.5ZM1.2 6.25a1.2 1.25 0 1 1 0-2.5 1.2 1.25 0 0 1 0 2.5Zm3.6 0a1.2 1.25 0 1 1 0-2.5 1.2 1.25 0 0 1 0 2.5ZM1.2 2.5a1.2 1.25 0 1 1 0-2.5 1.2 1.25 0 0 1 0 2.5Zm3.6 0a1.2 1.25 0 1 1 0-2.5 1.2 1.25 0 0 1 0 2.5Z"/></svg>
+</template>
+
+<script src="../js/filter-config.js"></script>
+<script src="../js/admin-filters.js"></script>
+</body>
+</html>

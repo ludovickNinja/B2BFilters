@@ -2,6 +2,8 @@
  *
  * Renders data/products.json (+ data/attributes.json) into the grid and drives
  * the grouped multi-select filter bar: Ring Design / Stones / Metal.
+ * Which facets and quick filters appear comes from the category setup
+ * loaded by js/filter-config.js.
  *
  * Filter semantics: options inside one facet are OR-ed, facets are AND-ed.
  * Each option shows how many items it would yield given the other facets.
@@ -9,38 +11,35 @@
 (function () {
   'use strict';
 
-  // ---------- Facet definitions (what the new bar shows) ----------
-  var SHAPES = ['Asscher', 'Baguette', 'Cushion', 'Elongated Cushion', 'Emerald', 'Heart', 'Marquise',
-    'Oval', 'Pear', 'Princess', 'Radiant', 'Round', 'Trillion'];
+  // ---------- Facet setup ----------
+  // Definitions come from data/filter-definitions.json (the Filters module);
+  // which facets and quick filters this category shows comes from its setup
+  // (data/category-filters.json, or what the admin Filters tab saved).
+  var FACETS = [];       // facets enabled for this category, in display order
+  var GROUPS = [];
+  // Quick filters: { facet, value } tiles. Each toggles one value of its facet,
+  // so tiles and the advanced bar stay in sync.
+  var QUICK_FILTERS = [];
 
-  var FACETS = [
-    { key: 'style', group: 'Ring Design', all: 'All Styles', plural: 'Styles',
-      options: ['3 Stone', 'Bypass', 'Chevron', 'Cluster', 'Double Halo', 'Floral', 'Free Form', 'Halo',
-        'Hidden Halo', 'Solitaire', 'Split Shank', 'Straight', 'Toi et Moi', 'Twisted', 'Vintage', 'Wide Band'] },
-    { key: 'head', group: 'Ring Design', all: 'All Heads', plural: 'Heads',
-      options: ['4-Prong', '6-Prong', 'Bezel', 'Double Prongs', 'Eagle Claw', 'Floral', 'Kite Set', 'Semi-Bezel',
-        'Split Prongs', 'Halo', 'Hidden Halo', 'Round Prongs', 'Trellis', 'V-Tip'] },
-    { key: 'shank', group: 'Ring Design', all: 'All Shanks', plural: 'Shanks',
-      options: ['Bezel', 'Cathedral', 'Channel', 'Chevron', 'Diamond', 'Engraved', 'Euro Shank', 'Fitted', 'Floral',
-        'Knife Edge', 'Milgrain', 'Non-Cathedral', 'Pave', 'Plain', 'Scallop', 'Split', 'Thin', 'Twist'] },
-    { key: 'width', group: 'Ring Design', all: 'All Widths', plural: 'Widths',
-      options: ['1.50', '1.60', '1.70', '1.80', '2.00', '2.10', '2.20', '2.50', '2.60', '2.70', '4.10', '5.00', '5.75', '7.00'],
-      format: function (v) { return v + ' mm'; } },
-    { key: 'centerShape', group: 'Stones', all: 'All Center Shapes', plural: 'Center Shapes', options: SHAPES },
-    { key: 'accentShape', group: 'Stones', all: 'All Accent Shapes', plural: 'Accent Shapes',
-      options: ['Round', 'Princess', 'Baguette', 'Marquise', 'Pear', 'Oval', 'Cushion', 'Emerald', 'Trillion'] },
-    { key: 'colour', group: 'Metal', all: 'All Colours', plural: 'Colours',
-      options: ['White', 'Yellow', 'Rose', 'White Shank with Rose Head', 'Yellow Shank with White Head',
-        'Rose Shank with White Head', 'White with Black Enamel', 'Yellow with Black Enamel', 'Yellow with White Detail',
-        'White with Rose Detail', 'Yellow Bezel - White Shank & Halo', 'Rose with White Detail', 'Yellow with White Enamel'] },
-    { key: 'karat', group: 'Metal', all: 'All Karats', plural: 'Karats', options: ['10K', '14K', '18K', 'Platinum'] }
-  ];
-  var GROUPS = ['Ring Design', 'Stones', 'Metal'];
+  function formatter(f) {
+    return f.unit ? function (v) { return v + ' ' + f.unit; } : null;
+  }
 
-  // Quick filters: the styles most buyers look for first. Each tile toggles
-  // one value of the `style` facet, so tiles and the advanced bar stay in sync.
-  var QUICK_FILTERS = ['3 Stone', 'Halo', 'Hidden Halo', 'Solitaire', 'Vintage'];
-  var QUICK_FACET = 'style';
+  function applySetup(setup) {
+    GROUPS = setup.groups;
+    var byKey = {};
+    setup.facets.forEach(function (f) {
+      byKey[f.key] = Object.assign({}, f, { format: formatter(f) });
+    });
+    FACETS = setup.config.facets.map(function (k) { return byKey[k]; });
+    QUICK_FILTERS = setup.config.quick.filter(function (q) { return setup.config.facets.indexOf(q.facet) !== -1; });
+    // Keep selections only for facets that are still shown
+    var sel = {};
+    FACETS.forEach(function (f) { sel[f.key] = (state.sel[f.key] || new Set()); });
+    state.sel = sel;
+    buildFacetBar();
+    buildQuickFilters();
+  }
 
   // ---------- Derivations from the scraped data ----------
   // SKU pattern: B001-02RWME-100A -> metal code "RWM" (+E = engraved)
@@ -72,6 +71,8 @@
       head: a.head || [],
       shank: a.shank || [],
       width: a.width ? [a.width] : [],
+      profile: a.profile || [],       // wedding band facets: no bridal SKU is tagged yet
+      finishing: a.finishing || [],
       centerShape: [deriveShape(p.centerStone)].filter(Boolean),
       accentShape: a.accentShape || [],
       colour: [deriveColour(p.sku)].filter(Boolean),
@@ -83,7 +84,6 @@
   // ---------- State ----------
   var products = [];
   var state = { sel: {}, sort: 'p.SKU' };
-  FACETS.forEach(function (f) { state.sel[f.key] = new Set(); });
 
   var grid = document.getElementById('productGrid');
   var tpl = document.getElementById('productCardTpl');
@@ -126,7 +126,10 @@
 
   function buildFacetBar() {
     facetBar.innerHTML = '';
+    facetEls = {};
     GROUPS.forEach(function (g) {
+      var facets = FACETS.filter(function (f) { return f.group === g; });
+      if (!facets.length) return;
       var group = document.createElement('div');
       group.className = 'facet_group';
       var label = document.createElement('div');
@@ -134,9 +137,7 @@
       label.textContent = g;
       var row = document.createElement('div');
       row.className = 'facet_group_row';
-      FACETS.filter(function (f) { return f.group === g; }).forEach(function (f) {
-        row.appendChild(buildFacet(f));
-      });
+      facets.forEach(function (f) { row.appendChild(buildFacet(f)); });
       group.appendChild(label);
       group.appendChild(row);
       facetBar.appendChild(group);
@@ -229,7 +230,8 @@
   function buildQuickFilters() {
     quickBar.innerHTML = '';
     quickEls = [];
-    QUICK_FILTERS.forEach(function (value) {
+    QUICK_FILTERS.forEach(function (q) {
+      var f = facetEls[q.facet].def;
       var tile = document.createElement('button');
       tile.type = 'button';
       tile.className = 'quick_tile';
@@ -239,24 +241,26 @@
         '<span class="quick_tile_check" aria-hidden="true">' +
           '<svg viewBox="0 0 12 12"><path d="M2 6.5l2.5 2.5L10 3.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>' +
         '</span>';
-      tile.querySelector('.quick_tile_label').textContent = value;
+      tile.querySelector('.quick_tile_label').textContent = f.format ? f.format(q.value) : q.value;
+      tile.title = f.plural + ': ' + tile.textContent;
       tile.addEventListener('click', function () {
-        var sel = state.sel[QUICK_FACET];
-        if (sel.has(value)) sel.delete(value); else sel.add(value);
+        var sel = state.sel[q.facet];
+        if (sel.has(q.value)) sel.delete(q.value); else sel.add(q.value);
         render();
       });
       quickBar.appendChild(tile);
-      quickEls.push({ tile: tile, value: value });
+      quickEls.push({ tile: tile, facet: q.facet, value: q.value });
     });
   }
 
   function updateQuickFilters() {
-    var sel = state.sel[QUICK_FACET];
-    var pool = products.filter(function (p) { return matchesAll(p, QUICK_FACET); });
+    quickBar.hidden = !quickEls.length;
     quickEls.forEach(function (qe) {
-      var on = sel.has(qe.value);
+      var on = state.sel[qe.facet].has(qe.value);
       // Dim a tile that would return nothing given the other active facets
-      var any = pool.some(function (p) { return p.attrs[QUICK_FACET].indexOf(qe.value) !== -1; });
+      var any = products.some(function (p) {
+        return matchesAll(p, qe.facet) && p.attrs[qe.facet].indexOf(qe.value) !== -1;
+      });
       qe.tile.classList.toggle('selected', on);
       qe.tile.classList.toggle('zero', !any);
       qe.tile.setAttribute('aria-pressed', String(on));
@@ -270,8 +274,12 @@
     els.adv.setAttribute('aria-expanded', String(open));
   }
   function updateAdvancedBadge() {
-    // Count active facets other than the quick-filter facet
-    var n = FACETS.filter(function (f) { return f.key !== QUICK_FACET && state.sel[f.key].size > 0; }).length;
+    // Count active facets whose selection isn't fully visible as quick tiles
+    var n = FACETS.filter(function (f) {
+      return Array.from(state.sel[f.key]).some(function (v) {
+        return !QUICK_FILTERS.some(function (q) { return q.facet === f.key && q.value === v; });
+      });
+    }).length;
     els.advBadge.textContent = n ? String(n) : '';
   }
 
@@ -334,16 +342,21 @@
 
   els.adv.addEventListener('click', function () { setAdvanced(!advOpen); });
 
-  buildFacetBar();
-  buildQuickFilters();
-
   Promise.all([
     fetch('data/products.json').then(function (r) { return r.json(); }),
-    fetch('data/attributes.json').then(function (r) { return r.json(); })
+    fetch('data/attributes.json').then(function (r) { return r.json(); }),
+    FilterConfig.load('')
   ]).then(function (res) {
     var attrs = res[1];
     products = res[0].map(function (p, i) { return enrich(p, i, attrs); });
+    applySetup(res[2]);
     render();
+
+    // Re-apply when the admin Filters tab saves or resets this category in another tab
+    window.addEventListener('storage', function (e) {
+      if (e.key !== FilterConfig.STORAGE_KEY && e.key !== null) return;
+      FilterConfig.load('').then(function (setup) { applySetup(setup); render(); });
+    });
   }).catch(function (err) {
     grid.innerHTML = '<div class="empty_msg">Could not load data files (' + err.message + '). Serve this folder over HTTP.</div>';
   });

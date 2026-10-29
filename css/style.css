@@ -98,6 +98,12 @@ header .tagline .cap { text-transform: capitalize; }
 /* ---------- Breadcrumb / title ---------- */
 .breadCrumb { font-family: 'Gilda Display', serif; font-size: 22px; text-transform: uppercase; margin: 22px 0 0 2px; color: #333; }
 .breadCrumb .sep { color: #555; margin: 0 6px; }
+.breadCrumb { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.breadCrumb a.admin_link {
+  display: inline-flex; align-items: center; gap: 6px; font-family: Arial, sans-serif; font-size: 13px;
+  text-transform: none; color: var(--blue);
+}
+.breadCrumb a.admin_link svg { width: 14px; height: 14px; }
 .pgTitle { font-family: 'Gilda Display', serif; font-weight: normal; font-size: 44px; text-align: center; margin: 46px 0 0 0; letter-spacing: 1px; text-transform: uppercase; }
 
 /* ---------- Quick filters ---------- */
